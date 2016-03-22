@@ -51,5 +51,19 @@
     <EmbeddedResource Include="Start.resx">
       <Filter>Archivos de recursos</Filter>
     </EmbeddedResource>
+    <EmbeddedResource Include="Estadisticas.resx">
+      <Filter>Archivos de recursos</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Juego.resx">
+      <Filter>Archivos de recursos</Filter>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro.resx">
+      <Filter>Archivos de recursos</Filter>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Media Include="resources\sound\StartScreen.wav">
+      <Filter>Archivos de recursos</Filter>
+    </Media>
   </ItemGroup>
 </Project>

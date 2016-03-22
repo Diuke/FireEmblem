@@ -19,9 +19,12 @@ namespace FireEmblem {
 		Start(void)
 		{
 			InitializeComponent();
+			
 			//
 			//TODO: agregar código de constructor aquí
 			//
+
+			System::Media::SoundPlayer^ music = gcnew System::Media::SoundPlayer();
 		}
 
 	protected:
@@ -39,6 +42,7 @@ namespace FireEmblem {
 	protected:
 
 	private:
+		System::Media::SoundPlayer^ music = gcnew System::Media::SoundPlayer();
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
@@ -49,8 +53,10 @@ namespace FireEmblem {
 		/// Método necesario para admitir el Diseñador. No se puede modificar
 		/// el contenido de este método con el editor de código.
 		/// </summary>
+
 		void InitializeComponent(void)
 		{
+
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Start::typeid));
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
@@ -79,14 +85,32 @@ namespace FireEmblem {
 			this->Name = L"Start";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Start";
+			this->Load += gcnew System::EventHandler(this, &Start::Start_Load);
 			this->ResumeLayout(false);
 
 		}
 #pragma endregion
+
+
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		Registro^ newForm = gcnew Registro();
 		newForm->Show();
 		this->Hide();
+		music->Stop();
+	}
+
+
+	private: System::Void Start_Load(System::Object^  sender, System::EventArgs^  e) {
+		try{
+			music->SoundLocation = "resources/sound/StartScreen.wav";
+			music->Load();
+			music->PlayLooping();
+		} 
+		catch (Exception^ e){
+			MessageBox::Show(e->Message);
+			 
+		}
+		
 	}
 	};
 }
