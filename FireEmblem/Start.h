@@ -19,12 +19,9 @@ namespace FireEmblem {
 		Start(void)
 		{
 			InitializeComponent();
-			
 			//
 			//TODO: agregar código de constructor aquí
 			//
-
-			System::Media::SoundPlayer^ music = gcnew System::Media::SoundPlayer();
 		}
 
 	protected:
@@ -42,10 +39,10 @@ namespace FireEmblem {
 	protected:
 
 	private:
-		System::Media::SoundPlayer^ music = gcnew System::Media::SoundPlayer();
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
+		System::Media::SoundPlayer^ music = gcnew System::Media::SoundPlayer();
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
@@ -53,25 +50,30 @@ namespace FireEmblem {
 		/// Método necesario para admitir el Diseñador. No se puede modificar
 		/// el contenido de este método con el editor de código.
 		/// </summary>
-
 		void InitializeComponent(void)
 		{
-
 			System::ComponentModel::ComponentResourceManager^  resources = (gcnew System::ComponentModel::ComponentResourceManager(Start::typeid));
 			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
 			// 
 			// button1
 			// 
-			this->button1->BackColor = System::Drawing::Color::DarkGray;
+			this->button1->BackColor = System::Drawing::Color::Transparent;
+			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
+			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->button1->Cursor = System::Windows::Forms::Cursors::Hand;
+			this->button1->FlatAppearance->BorderColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->button1->FlatAppearance->BorderSize = 0;
+			this->button1->FlatAppearance->MouseDownBackColor = System::Drawing::Color::Transparent;
+			this->button1->FlatAppearance->MouseOverBackColor = System::Drawing::Color::Transparent;
+			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Tahoma", 27.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->button1->Location = System::Drawing::Point(378, 349);
+			this->button1->ForeColor = System::Drawing::Color::Transparent;
+			this->button1->Location = System::Drawing::Point(393, 327);
 			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(399, 75);
+			this->button1->Size = System::Drawing::Size(289, 97);
 			this->button1->TabIndex = 0;
-			this->button1->Text = L"Play";
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &Start::button1_Click);
 			// 
@@ -90,25 +92,22 @@ namespace FireEmblem {
 
 		}
 #pragma endregion
-
-
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		Registro^ newForm = gcnew Registro();
 		newForm->Show();
-		this->Hide();
 		music->Stop();
+		this->Hide();
 	}
-
-
 	private: System::Void Start_Load(System::Object^  sender, System::EventArgs^  e) {
-		try{
+		try
+		{
 			music->SoundLocation = "resources/sound/StartScreen.wav";
 			music->Load();
 			music->PlayLooping();
-		} 
-		catch (Exception^ e){
-			MessageBox::Show(e->Message);
-			 
+		}
+		catch (Exception^ e)
+		{
+
 		}
 		
 	}

@@ -1,0 +1,10 @@
+cas
+Jinete
+Caballero
+Luchador
+Hacha
+asd
+Caballero
+Luchador
+Mercenario
+Espada
