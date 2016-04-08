@@ -175,6 +175,7 @@
     <Image Include="resources\img\FireEmblemPortada.jpg" />
   </ItemGroup>
   <ItemGroup>
+    <Media Include="resources\sound\registroMusic.wav" />
     <Media Include="resources\sound\StartScreen.wav" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

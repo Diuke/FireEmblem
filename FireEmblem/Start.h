@@ -37,7 +37,6 @@ namespace FireEmblem {
 		}
 	private: System::Windows::Forms::Button^  button1;
 	protected:
-
 	private:
 		/// <summary>
 		/// Variable del diseñador necesaria.
@@ -92,13 +91,16 @@ namespace FireEmblem {
 
 		}
 #pragma endregion
-	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+	
+	public: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 		Registro^ newForm = gcnew Registro();
-		newForm->Show();
-		music->Stop();
 		this->Hide();
+		music->Stop();
+		newForm->Show();
+		
 	}
 	private: System::Void Start_Load(System::Object^  sender, System::EventArgs^  e) {
+		
 		try
 		{
 			music->SoundLocation = "resources/sound/StartScreen.wav";

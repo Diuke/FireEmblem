@@ -1,5 +1,6 @@
 #pragma once
 #include "Juego.h"
+
 namespace FireEmblem {
 
 	using namespace System;
@@ -17,12 +18,14 @@ namespace FireEmblem {
 	public ref class Registro : public System::Windows::Forms::Form
 	{
 	public:
+		
 		Registro(void)
 		{
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
 			//
+
 		}
 
 	protected:
@@ -110,6 +113,7 @@ namespace FireEmblem {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
+		System::Media::SoundPlayer^ music = gcnew System::Media::SoundPlayer();
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
@@ -562,9 +566,9 @@ namespace FireEmblem {
 			this->label4->Location = System::Drawing::Point(454, 24);
 			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(85, 20);
+			this->label4->Size = System::Drawing::Size(89, 20);
 			this->label4->TabIndex = 76;
-			this->label4->Text = L"Team Blue";
+			this->label4->Text = L"Blue Team ";
 			// 
 			// label3
 			// 
@@ -577,7 +581,7 @@ namespace FireEmblem {
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(83, 20);
 			this->label3->TabIndex = 75;
-			this->label3->Text = L"Team Red";
+			this->label3->Text = L"Red Team";
 			// 
 			// label2
 			// 
@@ -615,7 +619,7 @@ namespace FireEmblem {
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
 			this->button1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->button1->Location = System::Drawing::Point(263, 518);
+			this->button1->Location = System::Drawing::Point(263, 517);
 			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(154, 38);
@@ -825,6 +829,7 @@ namespace FireEmblem {
 			this->Name = L"Registro";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Registro";
+			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &Registro::Registro_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &Registro::Registro_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox15))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox14))->EndInit();
@@ -920,23 +925,48 @@ private: System::Void button1_Click(System::Object^  sender, System::EventArgs^ 
 						 catch (Exception^ e){
 							 MessageBox::Show("No entro");
 						 }
-						 Juego^ juego=gcnew Juego();
+
+						 Juego^ juego = gcnew Juego(this);  
 						 juego->Show();
-						 this->Close();
+						 this->Hide();
+						 Restart();
+
 					 }else {
 						 MessageBox::Show("Debe seleccionar un arma.");
 					 }
 				 }else{
-					 MessageBox::Show("Debe seleccionar 3 unidades");
+					 MessageBox::Show("Debe seleccionar 3 unidades"); 
 				 }
 			 }
 		 
 		 }
 
-
-private: System::Void Registro_Load(System::Object^  sender, System::EventArgs^  e) {
-	
+private: System::Void Registro_FormClosed(System::Object^  sender, System::Windows::Forms::FormClosedEventArgs^  e) {
+	Application::Exit();
 }
+
+		 void Restart() {
+			 redName->Text = "";
+			 unidadAzul1->Checked = false;
+			 unidadAzul2->Checked = false;
+			 unidadAzul3->Checked = false;
+			 unidadAzul4->Checked = false;
+			 unidadAzul5->Checked = false;
+			 armaAzul1->Checked = false;
+			 armaAzul2->Checked = false;
+			 armaAzul3->Checked = false;
+			 blueName->Text = "";
+			 unidadRojo1->Checked = false;
+			 unidadRojo2->Checked = false;
+			 unidadRojo3->Checked = false;
+			 unidadRojo4->Checked = false;
+			 unidadRojo5->Checked = false;
+			 armaRojo1->Checked = false;
+			 armaRojo2->Checked = false;
+			 armaRojo3->Checked = false;
+
+		 }
+
 		 int checkUnidadesAzul() {
 			 int cont = 0;
 			 if (unidadAzul1->Checked) cont++;
@@ -1063,6 +1093,19 @@ private: System::Void pictureBox5_Click(System::Object^  sender, System::EventAr
 }
 private: System::Void pictureBox6_Click(System::Object^  sender, System::EventArgs^  e) {
 	MessageBox::Show("Mirmidon: \nUnidad de velocidad que usa espadas, alta velocidad pero baja vida \nVida: 15\nAtaque: 4\nHabilidad: 7\nVelocidad: 8\nSuerte: 0\nDefensa: 4\nMovimiento: 3 casillas");
+}
+
+
+private: System::Void Registro_Load(System::Object^  sender, System::EventArgs^  e) {
+	try{
+		music->SoundLocation = "resources/sound/registroMusic.wav";
+		music->Load();
+		music->PlayLooping();
+	}
+	catch (Exception^ e){
+		MessageBox::Show("No se encuentra"); 
+	}
+
 }
 };
 }

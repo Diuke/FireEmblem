@@ -1,4 +1,5 @@
 #pragma once
+#include "Estadisticas.h"
 
 namespace FireEmblem {
 
@@ -16,12 +17,14 @@ namespace FireEmblem {
 	public ref class Juego : public System::Windows::Forms::Form
 	{
 	public:
-		Juego(void)
+		System::Windows::Forms::Form^ registroForm;
+		Juego(System::Windows::Forms::Form^ rForm)
 		{
 			InitializeComponent();
 			//
-			//TODO: agregar código de constructor aquí
+			//TODO: agregar código de constructor aquí 
 			//
+			registroForm = rForm;
 		}
 
 	protected:
@@ -44,7 +47,6 @@ namespace FireEmblem {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-
 		ref struct Jugador{
 			String^ nombre;
 			String^ unidad1;
@@ -54,6 +56,9 @@ namespace FireEmblem {
 		};
 		Jugador^ Jugador1 = gcnew Jugador();
 		Jugador^ Jugador2 = gcnew Jugador();
+	private: System::Windows::Forms::RichTextBox^  richTextBox1;
+	private: System::Windows::Forms::Button^  salir;
+	private: System::Windows::Forms::Button^  button1;
 
 		System::ComponentModel::Container ^components;
 
@@ -65,6 +70,9 @@ namespace FireEmblem {
 		void InitializeComponent(void)
 		{
 			this->dataGridView1 = (gcnew System::Windows::Forms::DataGridView());
+			this->richTextBox1 = (gcnew System::Windows::Forms::RichTextBox());
+			this->salir = (gcnew System::Windows::Forms::Button());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->BeginInit();
 			this->SuspendLayout();
 			// 
@@ -87,13 +95,49 @@ namespace FireEmblem {
 			this->dataGridView1->Size = System::Drawing::Size(603, 603);
 			this->dataGridView1->TabIndex = 0;
 			// 
+			// richTextBox1
+			// 
+			this->richTextBox1->BackColor = System::Drawing::Color::White;
+			this->richTextBox1->Location = System::Drawing::Point(663, 329);
+			this->richTextBox1->Name = L"richTextBox1";
+			this->richTextBox1->ReadOnly = true;
+			this->richTextBox1->Size = System::Drawing::Size(398, 303);
+			this->richTextBox1->TabIndex = 1;
+			this->richTextBox1->Text = L"";
+			// 
+			// salir
+			// 
+			this->salir->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->salir->Location = System::Drawing::Point(971, 638);
+			this->salir->Name = L"salir";
+			this->salir->Size = System::Drawing::Size(90, 31);
+			this->salir->TabIndex = 2;
+			this->salir->Text = L"Salir";
+			this->salir->UseVisualStyleBackColor = true;
+			this->salir->Click += gcnew System::EventHandler(this, &Juego::salir_Click);
+			// 
+			// button1
+			// 
+			this->button1->Location = System::Drawing::Point(824, 284);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(75, 23);
+			this->button1->TabIndex = 3;
+			this->button1->Text = L"button1";
+			this->button1->UseVisualStyleBackColor = true;
+			this->button1->Click += gcnew System::EventHandler(this, &Juego::button1_Click);
+			// 
 			// Juego
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(1084, 681);
+			this->Controls->Add(this->button1);
+			this->Controls->Add(this->salir);
+			this->Controls->Add(this->richTextBox1);
 			this->Controls->Add(this->dataGridView1);
 			this->Name = L"Juego";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Juego";
 			this->Load += gcnew System::EventHandler(this, &Juego::Juego_Load);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->dataGridView1))->EndInit();
@@ -118,8 +162,29 @@ namespace FireEmblem {
 		Jugador2->unidad2 = fromRegistro->ReadLine();
 		Jugador2->unidad3 = fromRegistro->ReadLine();
 		Jugador2->arma = fromRegistro->ReadLine();
+		fromRegistro->Close();
 	}
 
 
-	};
+	public: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+		SaveEstadisticas();
+		Estadisticas^ stats = gcnew Estadisticas(registroForm); 
+		stats->Show(); 
+		this->Close();
+	}
+			 
+	void SaveEstadisticas() { 
+		StreamWriter^ gameData = gcnew StreamWriter("resources/files/registro.txt",true);
+		//escribe el equipo que gana
+		gameData->WriteLine("ROJO");
+		gameData->WriteLine(Jugador1->nombre);
+		gameData->Close();
+	}
+
+private: System::Void salir_Click(System::Object^  sender, System::EventArgs^  e) {
+	if ((MessageBox::Show("Esta seguro que desea salir?", "", MessageBoxButtons::YesNo)) == System::Windows::Forms::DialogResult::Yes) {
+		System::Windows::Forms::Application::Exit();
+	}
+}
+};
 }
