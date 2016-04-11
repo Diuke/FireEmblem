@@ -1,6 +1,5 @@
 #pragma once
 #include "Juego.h"
-
 namespace FireEmblem {
 
 	using namespace System;
@@ -17,16 +16,18 @@ namespace FireEmblem {
 	/// </summary>
 	public ref class Registro : public System::Windows::Forms::Form
 	{
+		 
 	public:
-		
-		Registro(void)
+		System::Media::SoundPlayer^ musica;
+		Registro(System::Media::SoundPlayer^ musicR)
 		{
 			InitializeComponent();
 			//
 			//TODO: agregar código de constructor aquí
 			//
-
+			musica = musicR;
 		}
+		
 
 	protected:
 		/// <summary>
@@ -40,6 +41,7 @@ namespace FireEmblem {
 			}
 		}
 
+	
 	protected: 
 	private: System::Windows::Forms::PictureBox^  pictureBox15;
 	private: System::Windows::Forms::PictureBox^  pictureBox14;
@@ -104,7 +106,12 @@ namespace FireEmblem {
 	private: System::Windows::Forms::PictureBox^  pictureBox16;
 	private: System::Windows::Forms::GroupBox^  groupBox1;
 	private: System::Windows::Forms::GroupBox^  groupBox2;
-	private: System::Windows::Forms::Button^  helpButton;
+	public: System::Windows::Forms::Button^  helpButton;
+	private:
+
+	private: System::Windows::Forms::Label^  label5;
+	
+
 
 
 
@@ -113,7 +120,6 @@ namespace FireEmblem {
 		/// <summary>
 		/// Variable del diseñador necesaria.
 		/// </summary>
-		System::Media::SoundPlayer^ music = gcnew System::Media::SoundPlayer();
 		System::ComponentModel::Container ^components;
 
 #pragma region Windows Form Designer generated code
@@ -166,6 +172,7 @@ namespace FireEmblem {
 			this->groupBox1 = (gcnew System::Windows::Forms::GroupBox());
 			this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
 			this->helpButton = (gcnew System::Windows::Forms::Button());
+			this->label5 = (gcnew System::Windows::Forms::Label());
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox15))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox14))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox13))->BeginInit();
@@ -416,7 +423,7 @@ namespace FireEmblem {
 			this->unidadAzul5->Margin = System::Windows::Forms::Padding(2);
 			this->unidadAzul5->Name = L"unidadAzul5";
 			this->unidadAzul5->Size = System::Drawing::Size(92, 24);
-			this->unidadAzul5->TabIndex = 86;
+			this->unidadAzul5->TabIndex = 14;
 			this->unidadAzul5->Text = L"Mirmidon";
 			this->unidadAzul5->UseVisualStyleBackColor = false;
 			this->unidadAzul5->CheckedChanged += gcnew System::EventHandler(this, &Registro::unidadAzul5_CheckedChanged);
@@ -431,7 +438,7 @@ namespace FireEmblem {
 			this->unidadAzul4->Margin = System::Windows::Forms::Padding(2);
 			this->unidadAzul4->Name = L"unidadAzul4";
 			this->unidadAzul4->Size = System::Drawing::Size(107, 24);
-			this->unidadAzul4->TabIndex = 85;
+			this->unidadAzul4->TabIndex = 13;
 			this->unidadAzul4->Text = L"Mercenario";
 			this->unidadAzul4->UseVisualStyleBackColor = false;
 			this->unidadAzul4->CheckedChanged += gcnew System::EventHandler(this, &Registro::unidadAzul4_CheckedChanged);
@@ -446,7 +453,7 @@ namespace FireEmblem {
 			this->unidadAzul3->Margin = System::Windows::Forms::Padding(2);
 			this->unidadAzul3->Name = L"unidadAzul3";
 			this->unidadAzul3->Size = System::Drawing::Size(95, 24);
-			this->unidadAzul3->TabIndex = 84;
+			this->unidadAzul3->TabIndex = 12;
 			this->unidadAzul3->Text = L"Luchador";
 			this->unidadAzul3->UseVisualStyleBackColor = false;
 			this->unidadAzul3->CheckedChanged += gcnew System::EventHandler(this, &Registro::unidadAzul3_CheckedChanged);
@@ -461,7 +468,7 @@ namespace FireEmblem {
 			this->unidadAzul2->Margin = System::Windows::Forms::Padding(2);
 			this->unidadAzul2->Name = L"unidadAzul2";
 			this->unidadAzul2->Size = System::Drawing::Size(95, 24);
-			this->unidadAzul2->TabIndex = 83;
+			this->unidadAzul2->TabIndex = 11;
 			this->unidadAzul2->Text = L"Caballero";
 			this->unidadAzul2->UseVisualStyleBackColor = false;
 			this->unidadAzul2->CheckedChanged += gcnew System::EventHandler(this, &Registro::unidadAzul2_CheckedChanged);
@@ -476,7 +483,7 @@ namespace FireEmblem {
 			this->unidadAzul1->Margin = System::Windows::Forms::Padding(2);
 			this->unidadAzul1->Name = L"unidadAzul1";
 			this->unidadAzul1->Size = System::Drawing::Size(71, 24);
-			this->unidadAzul1->TabIndex = 82;
+			this->unidadAzul1->TabIndex = 10;
 			this->unidadAzul1->Text = L"Jinete";
 			this->unidadAzul1->UseVisualStyleBackColor = false;
 			this->unidadAzul1->CheckedChanged += gcnew System::EventHandler(this, &Registro::unidadAzul1_CheckedChanged);
@@ -491,7 +498,7 @@ namespace FireEmblem {
 			this->unidadRojo5->Margin = System::Windows::Forms::Padding(2);
 			this->unidadRojo5->Name = L"unidadRojo5";
 			this->unidadRojo5->Size = System::Drawing::Size(92, 24);
-			this->unidadRojo5->TabIndex = 81;
+			this->unidadRojo5->TabIndex = 9;
 			this->unidadRojo5->Text = L"Mirmidon";
 			this->unidadRojo5->UseVisualStyleBackColor = false;
 			this->unidadRojo5->CheckedChanged += gcnew System::EventHandler(this, &Registro::unidadRojo5_CheckedChanged);
@@ -506,7 +513,7 @@ namespace FireEmblem {
 			this->unidadRojo4->Margin = System::Windows::Forms::Padding(2);
 			this->unidadRojo4->Name = L"unidadRojo4";
 			this->unidadRojo4->Size = System::Drawing::Size(107, 24);
-			this->unidadRojo4->TabIndex = 80;
+			this->unidadRojo4->TabIndex = 8;
 			this->unidadRojo4->Text = L"Mercenario";
 			this->unidadRojo4->UseVisualStyleBackColor = false;
 			this->unidadRojo4->CheckedChanged += gcnew System::EventHandler(this, &Registro::unidadRojo4_CheckedChanged);
@@ -521,7 +528,7 @@ namespace FireEmblem {
 			this->unidadRojo3->Margin = System::Windows::Forms::Padding(2);
 			this->unidadRojo3->Name = L"unidadRojo3";
 			this->unidadRojo3->Size = System::Drawing::Size(95, 24);
-			this->unidadRojo3->TabIndex = 79;
+			this->unidadRojo3->TabIndex = 7;
 			this->unidadRojo3->Text = L"Luchador";
 			this->unidadRojo3->UseVisualStyleBackColor = false;
 			this->unidadRojo3->CheckedChanged += gcnew System::EventHandler(this, &Registro::unidadRojo3_CheckedChanged);
@@ -536,7 +543,7 @@ namespace FireEmblem {
 			this->unidadRojo2->Margin = System::Windows::Forms::Padding(2);
 			this->unidadRojo2->Name = L"unidadRojo2";
 			this->unidadRojo2->Size = System::Drawing::Size(95, 24);
-			this->unidadRojo2->TabIndex = 78;
+			this->unidadRojo2->TabIndex = 6;
 			this->unidadRojo2->Text = L"Caballero";
 			this->unidadRojo2->UseVisualStyleBackColor = false;
 			this->unidadRojo2->CheckedChanged += gcnew System::EventHandler(this, &Registro::unidadRojo2_CheckedChanged);
@@ -552,7 +559,7 @@ namespace FireEmblem {
 			this->unidadRojo1->Margin = System::Windows::Forms::Padding(2);
 			this->unidadRojo1->Name = L"unidadRojo1";
 			this->unidadRojo1->Size = System::Drawing::Size(71, 24);
-			this->unidadRojo1->TabIndex = 77;
+			this->unidadRojo1->TabIndex = 5;
 			this->unidadRojo1->Text = L"Jinete";
 			this->unidadRojo1->UseVisualStyleBackColor = false;
 			this->unidadRojo1->CheckedChanged += gcnew System::EventHandler(this, &Registro::unidadRojo1_CheckedChanged);
@@ -566,9 +573,9 @@ namespace FireEmblem {
 			this->label4->Location = System::Drawing::Point(454, 24);
 			this->label4->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
 			this->label4->Name = L"label4";
-			this->label4->Size = System::Drawing::Size(89, 20);
+			this->label4->Size = System::Drawing::Size(85, 20);
 			this->label4->TabIndex = 76;
-			this->label4->Text = L"Blue Team ";
+			this->label4->Text = L"Team Blue";
 			// 
 			// label3
 			// 
@@ -581,7 +588,7 @@ namespace FireEmblem {
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(83, 20);
 			this->label3->TabIndex = 75;
-			this->label3->Text = L"Red Team";
+			this->label3->Text = L"Team Red";
 			// 
 			// label2
 			// 
@@ -619,12 +626,12 @@ namespace FireEmblem {
 			this->button1->FlatStyle = System::Windows::Forms::FlatStyle::Flat;
 			this->button1->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 15));
 			this->button1->ForeColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->button1->Location = System::Drawing::Point(263, 517);
+			this->button1->Location = System::Drawing::Point(257, 517);
 			this->button1->Margin = System::Windows::Forms::Padding(2);
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(154, 38);
-			this->button1->TabIndex = 72;
-			this->button1->Text = L"Jugar";
+			this->button1->TabIndex = 3;
+			this->button1->Text = L" Jugar";
 			this->button1->UseVisualStyleBackColor = false;
 			this->button1->Click += gcnew System::EventHandler(this, &Registro::button1_Click);
 			// 
@@ -636,7 +643,7 @@ namespace FireEmblem {
 			this->blueName->MaxLength = 8;
 			this->blueName->Name = L"blueName";
 			this->blueName->Size = System::Drawing::Size(190, 30);
-			this->blueName->TabIndex = 71;
+			this->blueName->TabIndex = 2;
 			// 
 			// redName
 			// 
@@ -646,7 +653,7 @@ namespace FireEmblem {
 			this->redName->MaxLength = 8;
 			this->redName->Name = L"redName";
 			this->redName->Size = System::Drawing::Size(180, 30);
-			this->redName->TabIndex = 70;
+			this->redName->TabIndex = 1;
 			// 
 			// armaRojo1
 			// 
@@ -657,7 +664,7 @@ namespace FireEmblem {
 			this->armaRojo1->Margin = System::Windows::Forms::Padding(2);
 			this->armaRojo1->Name = L"armaRojo1";
 			this->armaRojo1->Size = System::Drawing::Size(54, 17);
-			this->armaRojo1->TabIndex = 105;
+			this->armaRojo1->TabIndex = 15;
 			this->armaRojo1->TabStop = true;
 			this->armaRojo1->Text = L"Lanza";
 			this->armaRojo1->UseVisualStyleBackColor = false;
@@ -671,7 +678,7 @@ namespace FireEmblem {
 			this->armaRojo2->Margin = System::Windows::Forms::Padding(2);
 			this->armaRojo2->Name = L"armaRojo2";
 			this->armaRojo2->Size = System::Drawing::Size(57, 17);
-			this->armaRojo2->TabIndex = 106;
+			this->armaRojo2->TabIndex = 16;
 			this->armaRojo2->TabStop = true;
 			this->armaRojo2->Text = L"Hacha";
 			this->armaRojo2->UseVisualStyleBackColor = false;
@@ -685,7 +692,7 @@ namespace FireEmblem {
 			this->armaRojo3->Margin = System::Windows::Forms::Padding(2);
 			this->armaRojo3->Name = L"armaRojo3";
 			this->armaRojo3->Size = System::Drawing::Size(61, 17);
-			this->armaRojo3->TabIndex = 107;
+			this->armaRojo3->TabIndex = 17;
 			this->armaRojo3->TabStop = true;
 			this->armaRojo3->Text = L"Espada";
 			this->armaRojo3->UseVisualStyleBackColor = false;
@@ -699,7 +706,7 @@ namespace FireEmblem {
 			this->armaAzul3->Margin = System::Windows::Forms::Padding(2);
 			this->armaAzul3->Name = L"armaAzul3";
 			this->armaAzul3->Size = System::Drawing::Size(61, 17);
-			this->armaAzul3->TabIndex = 110;
+			this->armaAzul3->TabIndex = 20;
 			this->armaAzul3->Text = L"Espada";
 			this->armaAzul3->UseVisualStyleBackColor = false;
 			// 
@@ -712,7 +719,7 @@ namespace FireEmblem {
 			this->armaAzul2->Margin = System::Windows::Forms::Padding(2);
 			this->armaAzul2->Name = L"armaAzul2";
 			this->armaAzul2->Size = System::Drawing::Size(57, 17);
-			this->armaAzul2->TabIndex = 109;
+			this->armaAzul2->TabIndex = 19;
 			this->armaAzul2->Text = L"Hacha";
 			this->armaAzul2->UseVisualStyleBackColor = false;
 			// 
@@ -725,7 +732,7 @@ namespace FireEmblem {
 			this->armaAzul1->Margin = System::Windows::Forms::Padding(2);
 			this->armaAzul1->Name = L"armaAzul1";
 			this->armaAzul1->Size = System::Drawing::Size(54, 17);
-			this->armaAzul1->TabIndex = 108;
+			this->armaAzul1->TabIndex = 18;
 			this->armaAzul1->Text = L"Lanza";
 			this->armaAzul1->UseVisualStyleBackColor = false;
 			// 
@@ -745,6 +752,7 @@ namespace FireEmblem {
 			// 
 			// groupBox1
 			// 
+			this->groupBox1->BackColor = System::Drawing::Color::Transparent;
 			this->groupBox1->Controls->Add(this->pictureBox13);
 			this->groupBox1->Controls->Add(this->pictureBox11);
 			this->groupBox1->Controls->Add(this->pictureBox12);
@@ -761,13 +769,14 @@ namespace FireEmblem {
 			// 
 			// groupBox2
 			// 
+			this->groupBox2->BackColor = System::Drawing::Color::Transparent;
 			this->groupBox2->Controls->Add(this->pictureBox14);
 			this->groupBox2->Controls->Add(this->pictureBox15);
 			this->groupBox2->Controls->Add(this->pictureBox16);
 			this->groupBox2->Controls->Add(this->armaAzul1);
 			this->groupBox2->Controls->Add(this->armaAzul2);
 			this->groupBox2->Controls->Add(this->armaAzul3);
-			this->groupBox2->ForeColor = System::Drawing::Color::DeepSkyBlue;
+			this->groupBox2->ForeColor = System::Drawing::Color::DodgerBlue;
 			this->groupBox2->Location = System::Drawing::Point(447, 413);
 			this->groupBox2->Name = L"groupBox2";
 			this->groupBox2->Size = System::Drawing::Size(202, 90);
@@ -780,20 +789,37 @@ namespace FireEmblem {
 			this->helpButton->BackColor = System::Drawing::SystemColors::ButtonFace;
 			this->helpButton->FlatAppearance->BorderColor = System::Drawing::Color::DimGray;
 			this->helpButton->ForeColor = System::Drawing::Color::Black;
-			this->helpButton->Location = System::Drawing::Point(603, 532);
+			this->helpButton->Location = System::Drawing::Point(611, 534);
 			this->helpButton->Name = L"helpButton";
-			this->helpButton->Size = System::Drawing::Size(75, 23);
-			this->helpButton->TabIndex = 116;
+			this->helpButton->Size = System::Drawing::Size(68, 23);
+			this->helpButton->TabIndex = 4;
 			this->helpButton->Text = L"Ayuda";
 			this->helpButton->UseVisualStyleBackColor = false;
 			this->helpButton->Click += gcnew System::EventHandler(this, &Registro::helpButton_Click);
+			// 
+			// label5
+			// 
+			this->label5->AutoSize = true;
+			this->label5->BackColor = System::Drawing::Color::Transparent;
+			this->label5->Font = (gcnew System::Drawing::Font(L"Microsoft Sans Serif", 12));
+			this->label5->ForeColor = System::Drawing::Color::Red;
+			this->label5->Location = System::Drawing::Point(662, 7);
+			this->label5->Margin = System::Windows::Forms::Padding(2, 0, 2, 0);
+			this->label5->Name = L"label5";
+			this->label5->Size = System::Drawing::Size(20, 20);
+			this->label5->TabIndex = 116;
+			this->label5->Text = L"X";
+			this->label5->Click += gcnew System::EventHandler(this, &Registro::label5_Click);
 			// 
 			// Registro
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::SystemColors::ButtonHighlight;
-			this->ClientSize = System::Drawing::Size(690, 567);
+			this->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"$this.BackgroundImage")));
+			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Center;
+			this->ClientSize = System::Drawing::Size(691, 569);
+			this->Controls->Add(this->label5);
 			this->Controls->Add(this->helpButton);
 			this->Controls->Add(this->groupBox2);
 			this->Controls->Add(this->groupBox1);
@@ -825,12 +851,12 @@ namespace FireEmblem {
 			this->Controls->Add(this->blueName);
 			this->Controls->Add(this->redName);
 			this->DoubleBuffered = true;
-			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::None;
 			this->Name = L"Registro";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Registro";
-			this->FormClosed += gcnew System::Windows::Forms::FormClosedEventHandler(this, &Registro::Registro_FormClosed);
 			this->Load += gcnew System::EventHandler(this, &Registro::Registro_Load);
+			this->VisibleChanged += gcnew System::EventHandler(this, &Registro::Registro_VisibleChanged);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox15))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox14))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox13))->EndInit();
@@ -855,7 +881,10 @@ namespace FireEmblem {
 			this->PerformLayout();
 
 		}
+		//Variable de juego para cargar datos
 #pragma endregion
+		bool nick1v,nick2v;
+
 		//Funcion para detectar caracteres invalido
 		bool validChar(String^ nick){
 			for (int i = 0; i < nick->Length; i++)
@@ -868,8 +897,8 @@ namespace FireEmblem {
 			}
 			return false;
 		}
-		bool nick1v,nick2v;
-		//Sub para validar nick, y llamar otro formulario
+		
+		//Subrutianq para validar el nick de cada personaje
 		void validNick(String^ nick, int player){
 			if (nick->Equals(""))
 			 {
@@ -878,6 +907,12 @@ namespace FireEmblem {
 				 if (validChar(nick))
 				 {
 					 MessageBox::Show("EL nick del jugador "+player+" contiene caracteres invalidos");
+					 if (player==1)
+					 {
+						 redName->Text="";
+					 }else{
+						 blueName->Text="";
+					 }
 				 }else{
 					 if (player==1)
 					 {
@@ -889,85 +924,8 @@ namespace FireEmblem {
 			 }
 		}
 		
-
-private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
-			 validNick(redName->Text,1);//verifica nick 1
-			 validNick(blueName->Text,2);//verifica nick 2
-			 if (nick1v && nick2v){ //si ambos son correctos llama form
-				 if (checkUnidadesAzul() == 3 && checkUnidadesRojo() == 3) {
-					 if (checkArmaAzul() && checkArmaRojo()) {
-						 //Codigo para llamar el otro form 
-						 try{
-							 StreamWriter^ gameData = gcnew StreamWriter("resources/files/registro.txt",false);
-							 gameData->WriteLine(redName->Text);
-							 if (unidadRojo1->Checked) gameData->WriteLine("Jinete");
-							 if (unidadRojo2->Checked) gameData->WriteLine("Caballero");
-							 if (unidadRojo3->Checked) gameData->WriteLine("Luchador");
-							 if (unidadRojo4->Checked) gameData->WriteLine("Mercenario");
-							 if (unidadRojo5->Checked) gameData->WriteLine("Mirmidon");
-							 if (armaRojo1->Checked) gameData->WriteLine("Lanza");
-							 if (armaRojo2->Checked) gameData->WriteLine("Hacha");
-							 if (armaRojo3->Checked) gameData->WriteLine("Espada");
-
-							 gameData->WriteLine(blueName->Text);
-							 if (unidadAzul1->Checked) gameData->WriteLine("Jinete");
-							 if (unidadAzul2->Checked) gameData->WriteLine("Caballero");
-							 if (unidadAzul3->Checked) gameData->WriteLine("Luchador");
-							 if (unidadAzul4->Checked) gameData->WriteLine("Mercenario");
-							 if (unidadAzul5->Checked) gameData->WriteLine("Mirmidon");
-							 if (armaAzul1->Checked) gameData->WriteLine("Lanza");
-							 if (armaAzul2->Checked) gameData->WriteLine("Hacha");
-							 if (armaAzul3->Checked) gameData->WriteLine("Espada");
-
-							 gameData->Close();
-
-						 }
-						 catch (Exception^ e){
-							 MessageBox::Show("No entro");
-						 }
-
-						 Juego^ juego = gcnew Juego(this);  
-						 juego->Show();
-						 this->Hide();
-						 Restart();
-
-					 }else {
-						 MessageBox::Show("Debe seleccionar un arma.");
-					 }
-				 }else{
-					 MessageBox::Show("Debe seleccionar 3 unidades"); 
-				 }
-			 }
-		 
-		 }
-
-private: System::Void Registro_FormClosed(System::Object^  sender, System::Windows::Forms::FormClosedEventArgs^  e) {
-	Application::Exit();
-}
-
-		 void Restart() {
-			 redName->Text = "";
-			 unidadAzul1->Checked = false;
-			 unidadAzul2->Checked = false;
-			 unidadAzul3->Checked = false;
-			 unidadAzul4->Checked = false;
-			 unidadAzul5->Checked = false;
-			 armaAzul1->Checked = false;
-			 armaAzul2->Checked = false;
-			 armaAzul3->Checked = false;
-			 blueName->Text = "";
-			 unidadRojo1->Checked = false;
-			 unidadRojo2->Checked = false;
-			 unidadRojo3->Checked = false;
-			 unidadRojo4->Checked = false;
-			 unidadRojo5->Checked = false;
-			 armaRojo1->Checked = false;
-			 armaRojo2->Checked = false;
-			 armaRojo3->Checked = false;
-
-		 }
-
-		 int checkUnidadesAzul() {
+		//Funcion que retorna el numero de unidades seleccionadas por el jugador 1 equipo azul
+		int checkUnidadesAzul() {
 			 int cont = 0;
 			 if (unidadAzul1->Checked) cont++;
 			 if (unidadAzul2->Checked) cont++;
@@ -977,7 +935,9 @@ private: System::Void Registro_FormClosed(System::Object^  sender, System::Windo
 
 			 return cont;
 		 }
-		 int checkUnidadesRojo() {
+		
+		//Funcion que retorna el numero de unidades seleccionadas por el jugador 2 equipo rojo
+		int checkUnidadesRojo() {
 			 int cont = 0;
 			 if (unidadRojo1->Checked) cont++;
 			 if (unidadRojo2->Checked) cont++;
@@ -987,16 +947,156 @@ private: System::Void Registro_FormClosed(System::Object^  sender, System::Windo
 
 			 return cont;
 		 }
-
-		 bool checkArmaRojo() {
+		
+		//Funcion que retorna verdadero si el arma del jugador 1 equipo azul esta seleccionada
+		bool checkArmaRojo() {
 			 if (armaRojo1->Checked == true || armaRojo2->Checked == true || armaRojo3->Checked == true) return true;
 			 return false;
 		 }
-
-		 bool checkArmaAzul() {
+		 
+		//Funcion que retorna verdadero si el arma del jugador 2 equipo rojo esta seleccionada
+		bool checkArmaAzul() {
 			 if (armaAzul1->Checked == true || armaAzul2->Checked == true || armaAzul3->Checked == true) return true;
 			 return false;
 		 }
+
+		//Subrutina que carga las unidades seleccionadas por cada jugador
+		void unidadTeam(bool check1,bool check2,bool check3,bool check4,bool check5, bool check6, bool check7, bool check8){
+			StreamWriter^ gameData = gcnew StreamWriter("resources/files/registro.txt", true);
+			if (check1) gameData->WriteLine("Jinete");
+			if (check2) gameData->WriteLine("Caballero");
+			if (check3) gameData->WriteLine("Luchador");
+			if (check4) gameData->WriteLine("Mercenario");
+			if (check5) gameData->WriteLine("Mirmidon");
+			if (check6) gameData->WriteLine("Lanza");
+			if (check7) gameData->WriteLine("Hacha");
+			if (check8) gameData->WriteLine("Espada");
+			gameData->Close();
+		}
+
+		//Reiniciar todos los elementos
+		void Restart() {
+			redName->Text = "";
+			unidadAzul1->Checked = false;
+			unidadAzul2->Checked = false;
+			unidadAzul3->Checked = false;
+			unidadAzul4->Checked = false;
+			unidadAzul5->Checked = false;
+			armaAzul1->Checked = false;
+			armaAzul2->Checked = false;
+			armaAzul3->Checked = false;
+			blueName->Text = "";
+			unidadRojo1->Checked = false;
+			unidadRojo2->Checked = false;
+			unidadRojo3->Checked = false;
+			unidadRojo4->Checked = false;
+			unidadRojo5->Checked = false;
+			armaRojo1->Checked = false;
+			armaRojo2->Checked = false;
+			armaRojo3->Checked = false;
+
+		}
+		
+private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
+			Juego^ juego = gcnew Juego(this, musica);
+			 validNick(redName->Text,1);//Comprueba que el nick del jugador del equipo rojo este correcto
+			 validNick(blueName->Text,2);//Comprueba que el nick del jugador del equipo azul este correcto
+			 if (nick1v && nick2v){ //Verifica si son correctos ambos nicks
+				 if (checkUnidadesAzul() == 3 && checkUnidadesRojo() == 3) {//verifica si las tres unidades de cada equipo fueron seleccionadas
+					 if (checkArmaAzul() && checkArmaRojo()) {//Verifica si las armas de los dos jugadores fueron seleccionadas
+						 //Codigo para llamar el otro form 
+						 try{
+							 //Iniciar jugador azul
+							 StreamWriter^ gameData = gcnew StreamWriter("resources/files/registro.txt", false);
+							 gameData->WriteLine(blueName->Text);
+							 gameData->Close();
+							 unidadTeam(unidadAzul1->Checked,unidadAzul2->Checked,unidadAzul3->Checked,unidadAzul4->Checked,unidadAzul5->Checked, armaAzul1->Checked, armaAzul2->Checked, armaAzul3->Checked);
+							 juego->Jugador1->nombre=blueName->Text;
+							 if (armaAzul1->Checked) juego->Jugador1->arma="Lanza";
+							 if (armaAzul2->Checked) juego->Jugador1->arma="Hacha";
+							 if (armaAzul3->Checked) juego->Jugador1->arma="Espada";
+							 //Iniciar jugador rojo
+							 gameData = gcnew StreamWriter("resources/files/registro.txt", true);
+							 gameData->WriteLine(redName->Text);
+							 gameData->Close();
+							 unidadTeam(unidadRojo1->Checked,unidadRojo2->Checked,unidadRojo3->Checked,unidadRojo4->Checked,unidadRojo5->Checked, armaRojo1->Checked, armaRojo2->Checked, armaRojo3->Checked);
+							 juego->Jugador2->nombre = redName->Text;
+							 if (armaRojo1->Checked) juego->Jugador2->arma="Lanza";
+							 if (armaRojo2->Checked) juego->Jugador2->arma="Hacha";
+							 if (armaRojo3->Checked) juego->Jugador2->arma="Espada";
+							 StreamReader^ fromRegistro = gcnew StreamReader("resources/files/registro.txt");
+								juego->Jugador1->nombre = fromRegistro->ReadLine();
+								juego->Jugador1->unidad1 = fromRegistro->ReadLine();
+								juego->Jugador1->unidad2 = fromRegistro->ReadLine();
+								juego->Jugador1->unidad3 = fromRegistro->ReadLine();
+								juego->Jugador1->arma = fromRegistro->ReadLine();
+								juego->Jugador2->nombre = fromRegistro->ReadLine();
+								juego->Jugador2->unidad1 = fromRegistro->ReadLine();
+								juego->Jugador2->unidad2 = fromRegistro->ReadLine();
+								juego->Jugador2->unidad3 = fromRegistro->ReadLine();
+								juego->Jugador2->arma = fromRegistro->ReadLine();
+								fromRegistro->Close();
+						 }
+						 catch (Exception^ e){
+							 MessageBox::Show("No entro");
+						 }
+						 juego->Show();
+						 Restart();
+						 musica->Stop();
+						 this->Hide();
+
+					 }else {
+						 if (!checkArmaAzul())
+						 {
+							MessageBox::Show("El Jugador del equipo azul debe seleccionar un arma.");
+						 }
+						 if (!checkArmaRojo())
+						 {
+							MessageBox::Show("El Jugador del equipo rojo debe seleccionar un arma.");
+						 }
+					 }
+				 }else{
+					  switch (checkUnidadesRojo())
+					 {
+						 case 0:
+							 MessageBox::Show("Debes seleccionar 3 personajes \ndel equipo rojo al menos.");
+							 break;
+						 case 1:
+							 MessageBox::Show("Debes seleccionar 2 personaje más del equipo rojo.");
+							 break;
+						 case 2:
+							 MessageBox::Show("Debes seleccionar 1 personaje más del equipo rojo.");
+							 break;
+						 
+					 }
+					 switch (checkUnidadesAzul())
+					 {
+						 case 0:
+							 MessageBox::Show("Debes seleccionar 3 personajes \ndel equipo azul al menos");
+							 break;
+						 case 1:
+							 MessageBox::Show("Debes seleccionar 2 personaje más del equipo azul.");
+							 break;
+						 case 2:
+							 MessageBox::Show("Debes seleccionar 1 personaje más del equipo azul.");
+							 break;
+						 
+					 }
+				}
+			}
+		 
+		 }
+		  
+private: System::Void Registro_Load(System::Object^  sender, System::EventArgs^  e) {
+	try {
+		musica->SoundLocation = "resources/sound/registroMusic.wav";
+		musica->Load();
+		musica->PlayLooping();
+	}
+	catch (Exception^ e) {
+		MessageBox::Show("No se encuentra");
+	}
+}
 
 private: System::Void unidadAzul1_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 	if (checkUnidadesAzul() > 3) {
@@ -1028,6 +1128,7 @@ private: System::Void unidadAzul5_CheckedChanged(System::Object^  sender, System
 		MessageBox::Show("Solo puedes elegir 3 unidades.");
 	}
 }
+
 private: System::Void unidadRojo1_CheckedChanged(System::Object^  sender, System::EventArgs^  e) {
 	if (checkUnidadesRojo() > 3) {
 		unidadRojo1->Checked = false;
@@ -1064,6 +1165,7 @@ private: System::Void helpButton_Click(System::Object^  sender, System::EventArg
 	MessageBox::Show("La lanza derrota a la espada. \nLa espada derrota al hacha. \nEl hacha derrota a la lanza.");
 	MessageBox::Show("Haz click en la imagen de cada unidad para mas información.");
 }
+
 private: System::Void pictureBox1_Click(System::Object^  sender, System::EventArgs^  e) {
 	MessageBox::Show("Jinete: \nUnidad a caballo, usa lanzas y una buena armadura. \nVida: 17\nAtaque: 6\nHabilidad: 5\nSuerte: 3\nDefensa: 5 \nMovimiento: 4 casillas");
 }
@@ -1095,17 +1197,14 @@ private: System::Void pictureBox6_Click(System::Object^  sender, System::EventAr
 	MessageBox::Show("Mirmidon: \nUnidad de velocidad que usa espadas, alta velocidad pero baja vida \nVida: 15\nAtaque: 4\nHabilidad: 7\nVelocidad: 8\nSuerte: 0\nDefensa: 4\nMovimiento: 3 casillas");
 }
 
-
-private: System::Void Registro_Load(System::Object^  sender, System::EventArgs^  e) {
-	try{
-		music->SoundLocation = "resources/sound/registroMusic.wav";
-		music->Load();
-		music->PlayLooping();
+private: System::Void label5_Click(System::Object^  sender, System::EventArgs^  e) {
+			Application::Exit();
+		 }
+private: System::Void Registro_VisibleChanged(System::Object^  sender, System::EventArgs^  e) {
+	if (this->Visible == true) {
+		musica->PlayLooping();
 	}
-	catch (Exception^ e){
-		MessageBox::Show("No se encuentra"); 
-	}
-
+	
 }
 };
 }
